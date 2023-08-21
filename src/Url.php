@@ -6,6 +6,7 @@ use Transprime\Url\Exceptions\PackageException;
 
 class Url
 {
+    private ?string $fullDomain = null;
     private string $scheme;
     private string $port = '';
 
@@ -25,6 +26,13 @@ class Url
     public function setDomain(string $domain): static
     {
         $this->domain = $domain;
+
+        return $this;
+    }
+
+    public function setFullDomain(string $fullDomain): static
+    {
+        $this->fullDomain = $fullDomain;
 
         return $this;
     }
@@ -71,6 +79,15 @@ class Url
 
     public function toArray(): array
     {
+        if ($this->fullDomain) {
+            return [
+                $this->fullDomain,
+                $this->path,
+                '?',
+                http_build_query($this->query),
+            ];
+        }
+
         return [
             $this->scheme,
             $this->domain,

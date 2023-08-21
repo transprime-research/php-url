@@ -12,7 +12,7 @@ class UrlTest extends TestCase
         $this->assertIsObject(new Url());
     }
 
-    public function testUrlIsCorrect()
+    public function testUrlIsCorrect(): void
     {
         $url = Url::make()
             ->setScheme('http://')
@@ -26,6 +26,24 @@ class UrlTest extends TestCase
             'http://',
             'localhost',
             ':8080',
+            '/api/hello',
+            '?',
+            'name=John&public=yes',
+        ], $url->toArray());
+
+        $this->assertEquals('http://localhost:8080/api/hello?name=John&public=yes', (string) $url);
+    }
+
+    public function testUrlIsCorrectForSetFullDomain(): void
+    {
+        $url = Url::make()
+            ->setFullDomain('http://localhost:8080')
+            ->setPath('/api/hello')
+            ->addToQuery('name', 'John')
+            ->addToQuery('public', 'yes');
+
+        $this->assertEquals([
+            'http://localhost:8080',
             '/api/hello',
             '?',
             'name=John&public=yes',
