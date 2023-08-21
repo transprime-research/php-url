@@ -6,21 +6,24 @@ use Transprime\Url\Exceptions\PackageException;
 
 class Url
 {
-    private ?string $fullDomain = null;
-    private string $scheme;
-    private string $port = '';
+    public function __construct(
+        private string $scheme = '',
+        private string $domain = '',
+        private string $port = '',
+        private ?string $fullDomain = null,
+        private string $path = '',
+        private array $query = [],
+    ) {}
 
-    private string $domain;
-    private string $path = '';
-    private array $query = [];
-
-    public function __construct()
-    {
-    }
-
-    public static function make(): self
-    {
-        return new self();
+    public static function make(
+        string $scheme = '',
+        string $domain = '',
+        string $port = '',
+        ?string $fullDomain = null,
+        string $path = '',
+        array $query = [],
+    ): self {
+        return new self(...func_get_args());
     }
 
     public function setDomain(string $domain): static
