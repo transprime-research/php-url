@@ -77,7 +77,10 @@ See other packages in this series here:
 - https://github.com/omitobi/laravel-habitue [Jsonable Http Request(er) package with Collections response]
 
 ## Similar packages
-
+- luzzardi/php-url
+- martinmdev/php-url
+- simlux/php-url
+- thesmart/php-url
 
 ## Licence
 

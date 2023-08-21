@@ -1,14 +1,16 @@
 <?php
 
-use Transprime\Package\Package;
+namespace Transprime\Url;
 
-if (! function_exists('package')) {
-    /**
-     * New up a Package
-     *
-     * @return Package
-     */
-    function package() {
-        return new Package();
-    }
+use Transprime\Url\Url;
+
+function url(
+    string $scheme = '',
+    string $domain = '',
+    string $port = '',
+    ?string $fullDomain = null,
+    string $path = '',
+    array $query = [],
+): Url {
+    return new Url();
 }
