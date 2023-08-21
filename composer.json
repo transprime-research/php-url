@@ -1,0 +1,40 @@
+{
+  "name": "transprime-research/package-name",
+  "description": "PHP package-name",
+  "license": "MIT",
+  "keywords": [
+    "php",
+    "Helpers",
+    "Laravel"
+  ],
+  "homepage": "https://transprime-research.github.io/package-name/",
+  "support": {
+    "issues": "https://github.com/transprime-research/package-name/issues",
+    "source": "https://github.com/transprime-research/package-name/issues"
+  },
+  "authors": [
+    {
+      "name": "Oluwatobi Samuel Omisakin",
+      "email": "omisakin.oluwatobi@gmail.com"
+    }
+  ],
+  "require": {
+    "php": ">=7.4"
+  },
+  "require-dev": {
+    "phpunit/phpunit": "~8.0"
+  },
+  "autoload": {
+    "psr-4": {
+      "Transprime\\Package\\": "src"
+    },
+    "files": [
+      "Helpers/helpers.php"
+    ]
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "Transprime\\Package\\Tests\\": "tests/"
+    }
+  }
+}
