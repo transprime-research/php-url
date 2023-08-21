@@ -11,7 +11,7 @@
   <a href="https://packagist.org/packages/transprime-research/php-url"> <img src="https://poser.pugx.org/transprime-research/php-url/license" alt="License"/></a>
 </p>
 
-## About URL
+## About PHP-URL
 
 This works this way
 > Do it Like a PRO :ok:
