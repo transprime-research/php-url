@@ -6,14 +6,17 @@ use Transprime\Url\Exceptions\UrlException;
 
 class Url
 {
+    private array $query = [];
     public function __construct(
         private string $scheme = '',
         private string $domain = '',
         private string $port = '',
         private ?string $fullDomain = null,
         private string $path = '',
-        private array $query = [],
-    ) {}
+        array|string ...$query,
+    ) {
+        $this->query = $query[0] ?? $query['query'] ?? $query;
+    }
 
     public static function make(
         string $scheme = '',

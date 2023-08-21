@@ -77,9 +77,7 @@ class UrlTest extends TestCase
     public function testUrlIsCorrectWhenSetOnConstructor(): void
     {
         $url = Url::make(
-            scheme: 'http://',
-            domain: 'localhost',
-            port: '8080',
+            fullDomain: 'http://localhost:8080',
             path: '/api/hello',
             query: ['name' => 'John', 'public' => 'yes'],
         );
@@ -97,6 +95,25 @@ class UrlTest extends TestCase
             fullDomain: 'http://localhost:8080',
             path: '/api/hello',
             query: ['name' => 'John', 'public' => 'yes'],
+        );
+
+        $this->assertEquals([
+            'http://localhost:8080',
+            '/api/hello',
+            '?',
+            'name=John&public=yes',
+        ], $url->toArray());
+
+        $this->assertEquals('http://localhost:8080/api/hello?name=John&public=yes', (string) $url);
+    }
+
+    public function testUrlIsCorrectWhenQueryIsVariadic(): void
+    {
+        $url = new Url(
+            fullDomain: 'http://localhost:8080',
+            path: '/api/hello',
+            name: 'John',
+            public: 'yes',
         );
 
         $this->assertEquals([
