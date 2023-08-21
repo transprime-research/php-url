@@ -2,7 +2,7 @@
 
 namespace Transprime\Url;
 
-use Transprime\Url\Exceptions\PackageException;
+use Transprime\Url\Exceptions\UrlException;
 
 class Url
 {
@@ -76,6 +76,11 @@ class Url
     }
 
     public function __toString(): string
+    {
+        return $this->toString();
+    }
+
+    public function toString(): string
     {
         return implode($this->toArray());
     }

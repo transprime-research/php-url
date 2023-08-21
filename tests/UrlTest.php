@@ -55,7 +55,9 @@ class UrlTest extends TestCase
     public function testUrlIsCorrectWhenSetOnConstructor(): void
     {
         $url = Url::make(
-            fullDomain: 'http://localhost:8080',
+            scheme: 'http://',
+            domain: 'localhost',
+            port: '8080',
             path: '/api/hello',
             query: ['name' => 'John', 'public' => 'yes'],
         );
