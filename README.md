@@ -11,14 +11,14 @@
   <a href="https://packagist.org/packages/transprime-research/package"> <img src="https://poser.pugx.org/transprime-research/package/license" alt="License"/></a>
 </p>
 
-## About Package
+## About URL
 
 This works this way
 > Do it Like a PRO :ok:
 
 ## Installation
 
-- `composer require transprime-research/package-name`
+- `composer require transprime-research/php-url`
 
 ## Quick Usage
 Use it like this...
@@ -26,7 +26,15 @@ Use it like this...
 ## Other Usages
 
 ```php
-//
+$url = Url::make()
+    ->setScheme('http://')
+    ->setDomain('localhost')
+    ->setPort('8080')
+    ->setPath('/api/hello')
+    ->addToQuery('name', 'John')
+    ->addToQuery('public', 'yes');
+
+(string) $url; // http://localhost:8080/api/hello?name=John&public=yes
 ```
 
 ## Coming Soon
@@ -36,8 +44,6 @@ Use it like this...
 > Api implementation to be decided
 
 ## Additional Information
-
-Be aware that this package is part of a series of "The Proof of Concept" so best practices might not be the top priority.
 
 See other packages in this series here:
 
