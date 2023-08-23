@@ -85,7 +85,7 @@ class Url
 
     public function toString(): string
     {
-        return implode($this->toArray());
+        return implode(array_filter($this->toArray()));
     }
 
     public function toArray(): array
@@ -94,7 +94,7 @@ class Url
             return [
                 $this->fullDomain,
                 $this->path,
-                '?',
+                $this->query ? '?' : '',
                 http_build_query($this->query),
             ];
         }
@@ -104,7 +104,7 @@ class Url
             $this->domain,
             $this->port ? ':' . $this->port : $this->port,
             $this->path,
-            '?',
+            $this->query ? '?' : '',
             http_build_query($this->query)
         ];
     }
