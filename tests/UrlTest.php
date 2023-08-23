@@ -74,6 +74,23 @@ class UrlTest extends TestCase
         $this->assertEquals('http://localhost:8080/api/hello?name=John&public=yes', (string) $url);
     }
 
+    public function testUrlIsCorrectWhenThereIsNoQuery(): void
+    {
+        $url = Url::make(
+            fullDomain: 'http://localhost:8080',
+            path: '/api/hello',
+        );
+
+        $this->assertEquals([
+            'http://localhost:8080',
+            '/api/hello',
+            '',
+            '',
+        ], $url->toArray());
+
+        $this->assertEquals('http://localhost:8080/api/hello', (string) $url);
+    }
+
     public function testUrlIsCorrectWhenSetOnConstructor(): void
     {
         $url = Url::make(
